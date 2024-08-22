@@ -1,0 +1,50 @@
+:host{
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+.high-rate {
+    background-color: #d4edda; /* Green */
+}
+
+.low-rate {
+    background-color: #f8d7da; /* Red */
+}
+
+.medium-rate {
+    background-color: #fff3cd; /* Yellow */
+}
+
+.high-rate-row {
+    background-color: #d9f2d9; /* Light green */
+    color: black; /* Dark text */
+}
+
+.medium-rate-row {
+    background-color: #fef7d9; /* Light yellow */
+    color: black; /* Dark text */
+}
+
+.low-rate-row {
+    background-color: #ffd9d9; /* Light red */
+    color: black; /* Dark text */
+}
+
+.mat-header-row {
+    background-color: #333; /* Dark header background */
+    color: white; /* White header text */
+}
+
