@@ -1,10 +1,10 @@
-<div class="container unkilled">
+<div class="container" [ngClass] = "getBackgroundClass()">
     <h1>Kill Status</h1>
     
     <div class="Kill-Slider">
-        <mat-slide-toggle>
+        <button mat-fab (click)="sendKillMsg()">
             Software Kill
-        </mat-slide-toggle>
+        </button>
     </div>
     
     <div class="Current-Kill"> {{ killStatus }}</div>

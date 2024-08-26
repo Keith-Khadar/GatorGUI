@@ -8,6 +8,11 @@ interface RosTopics {
   types: string[];
 }
 
+interface RosServices {
+  services: string[];
+  types: string[];
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -24,7 +29,6 @@ export class RoslibService {
     this._ros.on('connection', () => {
       this._connected.next(true);
     });
-    // TODO: Manage the events "disconnect" and "error".
   }
 
   get connected(): Observable<boolean> {
@@ -60,5 +64,39 @@ export class RoslibService {
     }
 
     return this._topics[topicName].asObservable();
+  }
+  // Method to call a ROS service
+  callService(serviceName: string, request: any): Observable<any> {
+    return new Observable<any>((observer) => {
+      // First, get the list of available services
+      this._ros.getServices((services: string[]) => {
+        if (services.includes(serviceName)) {
+          // Get the service type for the specified service
+          this._ros.getServiceType(serviceName, (serviceType: string) => {
+            if (serviceType) {
+              const service = new ROSLIB.Service({
+                ros: this._ros,
+                name: serviceName,
+                serviceType: serviceType
+              });
+              const requestMsg = new ROSLIB.ServiceRequest(request);
+
+              service.callService(requestMsg, (response: any) => {
+                observer.next(response);
+                observer.complete();
+              }, (error: any) => {
+                observer.error(error);
+              });
+            } else {
+              console.error(`Service type for service ${serviceName} could not be determined.`);
+              observer.error(`Service type for service ${serviceName} could not be determined.`);
+            }
+          });
+        } else {
+          console.error(`Service ${serviceName} not found.`);
+          observer.error(`Service ${serviceName} not found.`);
+        }
+      });
+    });
   }
 }

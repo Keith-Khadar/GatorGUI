@@ -68,7 +68,8 @@ export class StatusComponent {
       }
 
       // Update the datasource
-      updatedData.push({ name: id, rate: avg == 0 ? 0 : 1000 / avg });
+      const newRate = avg == 0 ? 0 : 1000 / avg;
+      updatedData.push({ name: id, rate: +newRate.toFixed(2)});
       this.dataSource.next(updatedData);
     }
   }
