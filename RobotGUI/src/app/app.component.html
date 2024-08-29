@@ -1,5 +1,10 @@
-<mat-grid-list cols="5" rowHeight="50%">
-  <mat-grid-tile><app-status></app-status></mat-grid-tile>
-  <mat-grid-tile colspan="4" rowspan="2"><app-localization></app-localization></mat-grid-tile>
-  <mat-grid-tile rowspan="1"><app-kills></app-kills></mat-grid-tile>
-</mat-grid-list>
+<div class="container">
+  <div class="Kill"><app-kill-status></app-kill-status></div>
+  <div class="Map"><app-localization></app-localization></div>
+  <div class="Camera"><app-camera-feed></app-camera-feed></div>
+  <div class="Mission"><app-missions></app-missions></div>
+  <div class="Controls">Controls</div>
+  <div class="Sensors"><div><app-status></app-status></div></div>
+  <div class="Thrusters"><app-thrusters></app-thrusters></div>
+  <div class="Kills"><app-kills></app-kills></div>
+</div>

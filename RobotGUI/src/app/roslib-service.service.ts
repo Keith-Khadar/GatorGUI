@@ -65,6 +65,31 @@ export class RoslibService {
 
     return this._topics[topicName].asObservable();
   }
+
+  publishToTopic(topicName: string, msg: ROSLIB.Message) {
+    // Discover the topic details, including the message type
+    this._ros.getTopics((result: RosTopics) => {
+      const topicIndex = result.topics.indexOf(topicName);
+      if (topicIndex !== -1) {
+        const messageType = result.types[topicIndex];
+        if (messageType) {
+          const topic = new ROSLIB.Topic({
+            ros: this._ros,
+            name: topicName,
+            messageType: messageType
+          });
+
+          topic.publish(msg);
+        } else {
+          console.error(`Message type for topic ${topicName} could not be determined.`);
+        }
+      } else {
+        console.error(`Topic ${topicName} not found.`);
+      }
+    });
+  }
+
+
   // Method to call a ROS service
   callService(serviceName: string, request: any): Observable<any> {
     return new Observable<any>((observer) => {
@@ -99,4 +124,20 @@ export class RoslibService {
       });
     });
   }
+
+  getMissions(): Promise<Array<string>> {
+    return new Promise((resolve, reject) => {
+      const param = new ROSLIB.Param({
+        ros: this._ros,
+        name: "/available_missions"
+      });
+  
+      param.get((message: Array<string>) => {
+        resolve(message);
+      }); // No second argument needed
+    });
+  }
+  
+  
+
 }

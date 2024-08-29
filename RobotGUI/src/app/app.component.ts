@@ -4,6 +4,10 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { LocalizationComponent } from './localization/localization.component';
 import { KillsComponent } from './kills/kills.component';
 import { StatusComponent } from './status/status.component';
+import { KillStatusComponent } from "./kill-status/kill-status.component";
+import { CameraFeedComponent } from "./camera-feed/camera-feed.component";
+import { ThrustersComponent } from "./thrusters/thrusters.component";
+import { MissionsComponent } from "./missions/missions.component";
 
 @Component({
   selector: 'app-root',
@@ -14,7 +18,11 @@ import { StatusComponent } from './status/status.component';
     LocalizationComponent,
     KillsComponent,
     StatusComponent,
-  ],
+    KillStatusComponent,
+    CameraFeedComponent,
+    ThrustersComponent,
+    MissionsComponent
+],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

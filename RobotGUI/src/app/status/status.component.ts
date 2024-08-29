@@ -21,12 +21,9 @@ export class StatusComponent {
   dataSource = new BehaviorSubject<SensorElement[]>([]);
 
   topics = [
-    '/depth',
-    '/dvl',
-    '/imu/mag',
-    '/imu/data_raw',
-    '/camera/down/image_raw',
-    '/camera/left/image_raw',
+    "/wamv/sensors/camera/front_left_cam/image_raw",
+    "/wamv/sensors/gps/gps/fix",
+    "/wamv/sensors/imu/imu/data",
   ];
 
   constructor(private roslibService: RoslibService) {}
