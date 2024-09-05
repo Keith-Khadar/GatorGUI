@@ -1,0 +1,31 @@
+.thrusters {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Adjust the spacing between items as needed */
+}
+
+.thrusters div {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Adjust spacing between elements in each thruster */
+}
+
+button.mat-icon-button {
+    width: 48px; /* Adjust width as needed */
+    height: 48px; /* Adjust height as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px; /* Adjust font size for icon */
+    padding: 8px; /* Add padding if needed */
+}
+
+button.mat-icon-button mat-icon {
+    font-size: 24px; /* Ensure the icon size matches the button size */
+}
+
+/* Optional: Add some styling to the manual control button if needed */
+button:not(.mat-icon-button) {
+    padding: 8px 16px;
+    font-size: 16px;
+}

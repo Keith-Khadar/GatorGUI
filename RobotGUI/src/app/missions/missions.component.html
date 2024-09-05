@@ -1,0 +1,15 @@
+<div>
+    <!-- Dropdown Menu -->
+    <mat-form-field appearance="fill">
+      <mat-label>Select an option</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let option of options" [value]="option">
+          {{ option }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <!-- Play Button -->
+    <button mat-raised-button color="primary" (click)="onPlayClick()">Play</button>
+  </div>
+  

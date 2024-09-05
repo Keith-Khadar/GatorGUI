@@ -1,0 +1,14 @@
+<div class="thrusters">
+    <div *ngFor="let thruster of thrusters">
+        {{thruster.name}}
+        <mat-spinner [mode]="thruster.value > 0 ? 'indeterminate' : 'determinate'"></mat-spinner>
+        <button mat-icon-button (click)="decreaseThrust(thruster)" [disabled]="!manualControl">
+            <mat-icon>remove</mat-icon>
+        </button>
+        {{thruster.value}}
+        <button mat-icon-button (click)="increaseThrust(thruster)" [disabled]="!manualControl">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+    <button (click)="switchControl()">{{manualControl ? "Manual Control" : "Mission Control"}}</button>
+</div>

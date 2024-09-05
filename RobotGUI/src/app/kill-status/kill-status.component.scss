@@ -1,0 +1,16 @@
+.header{
+    font-size: 3rem; /* Adjust the size as needed */
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.killed{
+    background-color:orangered;
+}
+.unkilled{
+    background-color:lawngreen;
+}
