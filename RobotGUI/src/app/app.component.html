@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <div class="Kill"><app-kill-status></app-kill-status></div>
   <div class="Map"><app-localization></app-localization></div>
   <div class="Camera"><app-camera-feed></app-camera-feed></div>
@@ -7,4 +7,24 @@
   <div class="Sensors"><div><app-status></app-status></div></div>
   <div class="Thrusters"><app-thrusters></app-thrusters></div>
   <div class="Kills"><app-kills></app-kills></div>
+</div> -->
+
+<div>
+  <label>Robot IP:</label>
+  <input type="text" [(ngModel)]="robotIp" placeholder="Enter robot IP" />
+</div>
+<div>
+  <label>Username:</label>
+  <input type="text" [(ngModel)]="username" placeholder="Enter SSH username" />
+</div>
+<div>
+  <label>Password:</label>
+  <input type="password" [(ngModel)]="password" placeholder="Enter SSH password" />
+</div>
+<div>
+  <button (click)="startROS()">Launch ROS</button>
+</div>
+
+<div *ngIf="connectionStatus">
+  <p>Connection Status: {{ connectionStatus }}</p>
 </div>
