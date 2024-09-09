@@ -32,35 +32,29 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  robotIp: string = '';
-  username:string = '';
-  password:string = '';
+  robotIp: string = '10.245.80.200';
+  username:string = 'mil';
+  password:string = 'fuelsnob';
   connectionStatus:string = '';
+  output: string[] = [];
+  isConnected = false;
 
 
 
   constructor(private sshService: SshService) {}
 
-  checkSshConnection(){
-    this.sshService.checkSshConnection(this.robotIp, this.username, this.password).subscribe(
-      (response) => {
-        this.connectionStatus = response.status === 'success' ? 'Connected' : 'Failed to connect';
-        console.log('SSH Connection Status: ', response);
-      },
-      (error) => {
-        this.connectionStatus = 'Failed to connect';
-        console.error('Error checking SSH connection:', error);
-      }
-    );
+  ngOnInit() {
+    this.sshService.getRobotOutput().subscribe(data => {
+      this.output.push(data);
+    });
   }
+
   startROS(){
     this.sshService.startRobot(this.robotIp, this.username, this.password).subscribe(
       (response) => {
-        this.connectionStatus = response.status === 'success' ? 'Connected' : 'Failed to connect';
-        console.log('SSH Connection Status: ', response);
+        this.isConnected = true;
       },
       (error) => {
-        this.connectionStatus = 'Failed to connect';
         console.error('Error checking SSH connection:', error);
       }
     );

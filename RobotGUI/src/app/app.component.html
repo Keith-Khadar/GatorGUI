@@ -25,6 +25,7 @@
   <button (click)="startROS()">Launch ROS</button>
 </div>
 
-<div *ngIf="connectionStatus">
-  <p>Connection Status: {{ connectionStatus }}</p>
+<div *ngIf="isConnected">
+  <h3>Output:</h3>
+  <pre *ngFor="let line of output">{{line}}</pre>
 </div>
